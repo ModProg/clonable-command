@@ -19,7 +19,7 @@ jobs:
           - stable
           - nightly
         features:
-          - "serde"
+          - "-F serde"
           - ""
           - --no-default-features
         include:
