@@ -3,7 +3,7 @@
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 //! Anoyingly [`std::process::Command`] does not implement e.g. [`Clone`].
 //!
-//! This is due to these containing fields that cannor be easily support this [rust-lang/rust#22858 etc.](https://github.com/rust-lang/rust/pull/22858).
+//! This is due to these containing fields that cannot be easily support this [rust-lang/rust#22858 etc.](https://github.com/rust-lang/rust/pull/22858).
 
 use std::collections::HashMap;
 use std::ffi::{OsStr, OsString};
