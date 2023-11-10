@@ -1,0 +1,35 @@
+[package]
+name = "clonable-command"
+version = "0.1.0"
+edition = "2021"
+categories = ["development-tools", "encoding"]
+description = "An std::process::Command that implements Clone and serde::*"
+keywords = ["command", "clone", "serde"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/ModProg/clonable-command"
+documentation = "https://docs.rs/clonable-command"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.192", features = ["derive"], optional = true }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[[package.metadata.release.pre-release-replacements]]
+file = "CHANGELOG.md"
+search = '## \[Unreleased\]'
+replace = """
+<!-- ## [Unreleased] -->
+## [{{version}}] - {{date}}\
+"""
+[[package.metadata.release.pre-release-replacements]]
+file = "CHANGELOG.md"
+search = '\[unreleased\]: (.*)/(v.*)\.\.\.HEAD'
+replace = """
+[unreleased]: $1/{{tag_name}}...HEAD
+[{{version}}]: $1/$2...{{tag_name}}\
+"""
