@@ -292,7 +292,7 @@ impl Command {
 
     /// Convert this command to a [`std::process::Command`].
     #[must_use]
-    pub fn as_std(&self) -> StdCommand {
+    pub fn to_std(&self) -> StdCommand {
         self.into()
     }
 }
