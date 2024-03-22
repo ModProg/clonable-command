@@ -1,9 +1,12 @@
 #![warn(clippy::pedantic, missing_docs, clippy::cargo)]
 #![allow(clippy::missing_errors_doc)]
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
-//! Anoyingly [`std::process::Command`] does not implement e.g. [`Clone`].
+//! Anoyingly, [`std::process::Command`] does not implement [`Clone`].
 //!
-//! This is due to these containing fields that cannot be easily support this [rust-lang/rust#22858 etc.](https://github.com/rust-lang/rust/pull/22858).
+//! This is due to [`std::process::Command`] containing fields (like file handles for stdin/stdout)
+//! that cannot easily be cloned (see [rust-lang/rust#22119][22119]).
+//!
+//! [22119]: https://github.com/rust-lang/rust/pull/22119#discussion_r24515717
 
 use std::collections::HashMap;
 use std::ffi::{OsStr, OsString};
