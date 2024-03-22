@@ -30,7 +30,7 @@ pub enum Stdio {
 impl Stdio {
     /// Convert this value into a [`std::process::Stdio`].
     #[must_use]
-    pub fn as_std(&self) -> StdStdio {
+    pub fn to_std(&self) -> StdStdio {
         self.into()
     }
 }
