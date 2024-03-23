@@ -30,8 +30,26 @@ pub enum Stdio {
     Null,
 }
 
+impl Stdio {
+    /// Convert this value into a [`std::process::Stdio`].
+    #[must_use]
+    pub fn to_std(&self) -> StdStdio {
+        self.into()
+    }
+}
+
 impl From<Stdio> for StdStdio {
     fn from(value: Stdio) -> Self {
+        match value {
+            Stdio::Inherit => StdStdio::inherit(),
+            Stdio::Piped => StdStdio::piped(),
+            Stdio::Null => StdStdio::null(),
+        }
+    }
+}
+
+impl From<&Stdio> for StdStdio {
+    fn from(value: &Stdio) -> Self {
         match value {
             Stdio::Inherit => StdStdio::inherit(),
             Stdio::Piped => StdStdio::piped(),
@@ -273,5 +291,11 @@ impl Command {
     /// Behaves identical to std's [`Command::status`](StdCommand::status).
     pub fn status(&self) -> Result<ExitStatus> {
         StdCommand::from(self).status()
+    }
+
+    /// Convert this command to a [`std::process::Command`].
+    #[must_use]
+    pub fn to_std(&self) -> StdCommand {
+        self.into()
     }
 }
