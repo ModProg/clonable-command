@@ -1,6 +1,6 @@
 [package]
 name = "clonable-command"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 categories = ["development-tools", "encoding"]
 description = "An std::process::Command that implements Clone and serde::*"
